@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello World</title>
+    <url>/2024/06/19/hello-world/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<a class="button  center large" href='https://comment.mrzxr.top' title='博客留言板'>博客留言板</a>
+
+]]></content>
+  </entry>
+  <entry>
     <title>python新作——谷歌浏览器dino游戏</title>
     <url>/2024/06/20/python%E6%96%B0%E4%BD%9C%E2%80%94%E2%80%94%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8dino%E6%B8%B8%E6%88%8F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>大家好，这是我建站后的第三篇（准确来说是第二篇）文章，看标题想必大家都知道作品叫什么了吧，就是谷歌浏览器在断网时会跳出的小恐龙游戏。今天我们利用python还原并提供您教程，并将代码开源，您可以随时取用，那我们……开整！</p>
@@ -24,26 +44,6 @@
       <tags>
         <tag>数码编程</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2024/06/19/hello-world/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<a class="button  center large" href='https://comment.mrzxr.top' title='博客留言板'>博客留言板</a>
-
-]]></content>
   </entry>
   <entry>
     <title>studio从入门到精通——像乐高设计师一样创作   一</title>
@@ -108,35 +108,12 @@
 
 <p>具体操作可观看如下视频</p>
   
-<iframe src=" https://v.afbcs.cn/bAGnzT " scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe src=" https://v.afbcs.cn/yMYJvm " scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 <a class="button  center large" href='https://comment.mrzxr.top' title='博客留言板'>博客留言板</a>
 ]]></content>
       <tags>
         <tag>乐高</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>本站10月更新日志  及第3季度运营报告</title>
-    <url>/2024/10/06/%E6%9C%AC%E7%AB%9910%E6%9C%88%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97%20%20%E5%8F%8A%E7%AC%AC3%E5%AD%A3%E5%BA%A6%E8%BF%90%E8%90%A5%E6%8A%A5%E5%91%8A/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>
-  <div class="note p-4 mb-4 rounded-small blue">
-    <p>域名已更新至”mrzxr.top”!!!!!</p>
-
-  </div>
-<h2 id="第一部分：更新功能"><a href="#第一部分：更新功能" class="headerlink" title="第一部分：更新功能"></a>第一部分：更新功能</h2><p>本次更新主要集中于对于网页模板的改善和分类以及更新了域名”mrzxr.top”，使得整体页面更出彩，更个性</p>
-<h3 id="1-1新增归档功能"><a href="#1-1新增归档功能" class="headerlink" title="1.1新增归档功能."></a>1.1新增归档功能.</h3><p>在网页菜单栏中新增“archive”按钮，访客可以通过点击归档按钮看到本博客的全部文章和发布时间，使得博文更加条理清晰。</p>
-<h3 id="1-2新增搜索功能"><a href="#1-2新增搜索功能" class="headerlink" title="1.2新增搜索功能."></a>1.2新增搜索功能.</h3><p>访客可以在网页右上角点击放大镜按钮即可看到搜索框，通过搜索关键词即可定位到具体博文，方便查找博客内容。</p>
-<h3 id="1-3新增”tags”链接"><a href="#1-3新增”tags”链接" class="headerlink" title="1.3新增”tags”链接."></a>1.3新增”tags”链接.</h3><p>访客可点击”link”按钮在跳出的二级菜单栏中找到“学习资料”、“数码编程”、“乐高”、“公告通知”四个标签，选择需要的链接点击即可查找到与该标签内容相关的文章。</p>
-<h3 id="1-4新增留言板功能"><a href="#1-4新增留言板功能" class="headerlink" title="1.4新增留言板功能."></a>1.4新增留言板功能.</h3><p>本站近期开通了留言板功能，访客可点击菜单栏的”comment”按钮跳转至<a class="link"   href="https://comment.mrzxr.top/" >https://comment.mrzxr.top <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>即可评论，评论时请注意按照置顶提示发表评论，<a class="link"   href="https://comment.mrzxr.top/" >评论区跳转链接 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 。</p>
-<h3 id="1-5页面改版"><a href="#1-5页面改版" class="headerlink" title="1.5页面改版."></a>1.5页面改版.</h3><p>本站将网页背景和主色调进行更改，更符合本网页的主题和作者审美，更加个性化。</p>
-<h2 id="第二部分：运营报告"><a href="#第二部分：运营报告" class="headerlink" title="第二部分：运营报告."></a>第二部分：运营报告.</h2><p>本站始建于2024年6月20日，至今已安全运行108天，共计产出5篇文章，生成4个标签，其中一篇正在连载中（托更中），预计第四季度可产出2-3篇完整文章，欢迎持续关注。</p>
-<h2 id="结语："><a href="#结语：" class="headerlink" title="结语："></a>结语：</h2><p>我是terryzhang，一个平凡的初中生。相见就是缘分。这里，是我的后花园，也是大家的茶馆。欢迎关注我的blog、bilibili，也欢迎去留言版评论，期待下次和你相见~。</p>
-<a class="button  center large" href='https://comment.mrzxr.top' title='博客留言板'>博客留言板</a>
-
-]]></content>
-      <tags>
-        <tag>公告通知</tag>
       </tags>
   </entry>
   <entry>
@@ -167,6 +144,29 @@
                                                     2024-6-20
 </code></pre>
 <a class="button  center large" href='https://comment.mrzxr.top' title='博客留言板'>博客留言板</a>
+]]></content>
+      <tags>
+        <tag>公告通知</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>本站10月更新日志  及第3季度运营报告</title>
+    <url>/2024/10/06/%E6%9C%AC%E7%AB%9910%E6%9C%88%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97%20%20%E5%8F%8A%E7%AC%AC3%E5%AD%A3%E5%BA%A6%E8%BF%90%E8%90%A5%E6%8A%A5%E5%91%8A/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>
+  <div class="note p-4 mb-4 rounded-small blue">
+    <p>域名已更新至”mrzxr.top”!!!!!</p>
+
+  </div>
+<h2 id="第一部分：更新功能"><a href="#第一部分：更新功能" class="headerlink" title="第一部分：更新功能"></a>第一部分：更新功能</h2><p>本次更新主要集中于对于网页模板的改善和分类以及更新了域名”mrzxr.top”，使得整体页面更出彩，更个性</p>
+<h3 id="1-1新增归档功能"><a href="#1-1新增归档功能" class="headerlink" title="1.1新增归档功能."></a>1.1新增归档功能.</h3><p>在网页菜单栏中新增“archive”按钮，访客可以通过点击归档按钮看到本博客的全部文章和发布时间，使得博文更加条理清晰。</p>
+<h3 id="1-2新增搜索功能"><a href="#1-2新增搜索功能" class="headerlink" title="1.2新增搜索功能."></a>1.2新增搜索功能.</h3><p>访客可以在网页右上角点击放大镜按钮即可看到搜索框，通过搜索关键词即可定位到具体博文，方便查找博客内容。</p>
+<h3 id="1-3新增”tags”链接"><a href="#1-3新增”tags”链接" class="headerlink" title="1.3新增”tags”链接."></a>1.3新增”tags”链接.</h3><p>访客可点击”link”按钮在跳出的二级菜单栏中找到“学习资料”、“数码编程”、“乐高”、“公告通知”四个标签，选择需要的链接点击即可查找到与该标签内容相关的文章。</p>
+<h3 id="1-4新增留言板功能"><a href="#1-4新增留言板功能" class="headerlink" title="1.4新增留言板功能."></a>1.4新增留言板功能.</h3><p>本站近期开通了留言板功能，访客可点击菜单栏的”comment”按钮跳转至<a class="link"   href="https://comment.mrzxr.top/" >https://comment.mrzxr.top <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>即可评论，评论时请注意按照置顶提示发表评论，<a class="link"   href="https://comment.mrzxr.top/" >评论区跳转链接 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 。</p>
+<h3 id="1-5页面改版"><a href="#1-5页面改版" class="headerlink" title="1.5页面改版."></a>1.5页面改版.</h3><p>本站将网页背景和主色调进行更改，更符合本网页的主题和作者审美，更加个性化。</p>
+<h2 id="第二部分：运营报告"><a href="#第二部分：运营报告" class="headerlink" title="第二部分：运营报告."></a>第二部分：运营报告.</h2><p>本站始建于2024年6月20日，至今已安全运行108天，共计产出5篇文章，生成4个标签，其中一篇正在连载中（托更中），预计第四季度可产出2-3篇完整文章，欢迎持续关注。</p>
+<h2 id="结语："><a href="#结语：" class="headerlink" title="结语："></a>结语：</h2><p>我是terryzhang，一个平凡的初中生。相见就是缘分。这里，是我的后花园，也是大家的茶馆。欢迎关注我的blog、bilibili，也欢迎去留言版评论，期待下次和你相见~。</p>
+<a class="button  center large" href='https://comment.mrzxr.top' title='博客留言板'>博客留言板</a>
+
 ]]></content>
       <tags>
         <tag>公告通知</tag>
