@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello World</title>
+    <url>/2024/06/19/hello-world/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<a class="button  center large" href='https://comment.mrzxr.top' title='博客留言板'>博客留言板</a>
+
+]]></content>
+  </entry>
+  <entry>
     <title>python新作——谷歌浏览器dino游戏</title>
     <url>/2024/06/20/python%E6%96%B0%E4%BD%9C%E2%80%94%E2%80%94%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8dino%E6%B8%B8%E6%88%8F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>大家好，这是我建站后的第三篇（准确来说是第二篇）文章，看标题想必大家都知道作品叫什么了吧，就是谷歌浏览器在断网时会跳出的小恐龙游戏。今天我们利用python还原并提供您教程，并将代码开源，您可以随时取用，那我们……开整！</p>
@@ -26,24 +46,17 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2024/06/19/hello-world/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+    <title>欢迎来到我的博客</title>
+    <url>/2024/06/20/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>　　这里是terryzhang的小站，本人是一位初中生。本站前身是利用文小站建的<a class="link"   href="https://terryzhang.wss.cc/" >个人网站 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 。由于文小站因为部分原因停止了技术支持和服务器提供，于是现将个人网址移动到本站，原网址于2024年7月1日起作废，若访问原网址出现404，为正常现象。本站利用hexo作为框架，使用js，HTML，css等语言进行编写，相比原网站更加美观，自定义度较高，能够更好分享我的生活和经验，网站还有诸多需要优化之处，还请多多指教。业余爱好者水平有限，有不足之处还请各位见谅，本站不定期更新，欢迎评论和关注，在此谢谢您光顾本站</p>
+<pre><code>                                                    Terryzhang
+                                                    2024-6-20
+</code></pre>
 <a class="button  center large" href='https://comment.mrzxr.top' title='博客留言板'>博客留言板</a>
-
 ]]></content>
+      <tags>
+        <tag>公告通知</tag>
+      </tags>
   </entry>
   <entry>
     <title>studio从入门到精通——像乐高设计师一样创作   一</title>
@@ -154,19 +167,6 @@
 <h2 id="结语："><a href="#结语：" class="headerlink" title="结语："></a>结语：</h2><p>我是terryzhang，一个平凡的初中生。相见就是缘分。这里，是我的后花园，也是大家的茶馆。欢迎关注我的blog、bilibili，也欢迎去留言版评论，期待下次和你相见~。</p>
 <a class="button  center large" href='https://comment.mrzxr.top' title='博客留言板'>博客留言板</a>
 
-]]></content>
-      <tags>
-        <tag>公告通知</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>欢迎来到我的博客</title>
-    <url>/2024/06/20/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>　　这里是terryzhang的小站，本人是一位初中生。本站前身是利用文小站建的<a class="link"   href="https://terryzhang.wss.cc/" >个人网站 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 。由于文小站因为部分原因停止了技术支持和服务器提供，于是现将个人网址移动到本站，原网址于2024年7月1日起作废，若访问原网址出现404，为正常现象。本站利用hexo作为框架，使用js，HTML，css等语言进行编写，相比原网站更加美观，自定义度较高，能够更好分享我的生活和经验，网站还有诸多需要优化之处，还请多多指教。业余爱好者水平有限，有不足之处还请各位见谅，本站不定期更新，欢迎评论和关注，在此谢谢您光顾本站</p>
-<pre><code>                                                    Terryzhang
-                                                    2024-6-20
-</code></pre>
-<a class="button  center large" href='https://comment.mrzxr.top' title='博客留言板'>博客留言板</a>
 ]]></content>
       <tags>
         <tag>公告通知</tag>
