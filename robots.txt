@@ -9,5 +9,4 @@ Disallow: /js/
 Disallow: /css/
 Disallow: /fonts/
 Disallow: /fancybox/
-Sitemap: https://mikolaje.github.io/sitemap.xml
-Sitemap: https://mikolaje.github.io/baidu_sitemap.xml
+Sitemap: https://mrzxr.top/sitemap.xml
