@@ -7,4 +7,4 @@ Allow: /about/
 Disallow: /vendors/
 Disallow: /fonts/
 Disallow: /fancybox/
-Sitemap: https://mrzxr.top/sitemap.xml
+Sitemap: https://www.mrzxr.top/sitemap.xml
