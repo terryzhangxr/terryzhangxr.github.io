@@ -124,13 +124,6 @@
   </url>
   
   <url>
-    <loc>https://www.mrzxr.com/tags/%E6%9B%B4%E6%96%B0/</loc>
-    <lastmod>2025-12-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.mrzxr.com/tags/python/</loc>
     <lastmod>2025-12-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -139,6 +132,13 @@
   
   <url>
     <loc>https://www.mrzxr.com/tags/lego-studio/</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.mrzxr.com/tags/%E6%9B%B4%E6%96%B0/</loc>
     <lastmod>2025-12-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -161,14 +161,14 @@
   </url>
   
   <url>
-    <loc>https://www.mrzxr.com/categories/%E5%85%AC%E5%91%8A%E9%80%9A%E7%9F%A5/</loc>
+    <loc>https://www.mrzxr.com/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</loc>
     <lastmod>2025-12-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.mrzxr.com/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</loc>
+    <loc>https://www.mrzxr.com/categories/%E5%85%AC%E5%91%8A%E9%80%9A%E7%9F%A5/</loc>
     <lastmod>2025-12-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
