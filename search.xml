@@ -116,85 +116,6 @@
       </tags>
   </entry>
   <entry>
-    <title>python新作——谷歌浏览器dino游戏</title>
-    <url>/2024/06/20/python%E6%96%B0%E4%BD%9C%E2%80%94%E2%80%94%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8dino%E6%B8%B8%E6%88%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>说到google chrome，很多人都会想到它标志性的断网小游戏——chrome dino，今日，我们利用python还原并将代码开源，欢迎随时取用。话不多说，直接进入正题       </p>
-<h3 id="第一部分-配置环境"><a href="#第一部分-配置环境" class="headerlink" title="第一部分:配置环境"></a>第一部分:配置环境</h3><p>编译器：pycharm社区版2024.1<br>插件：pygame</p>
-<p>导入所用库,没有的可以去下载，具体方法不多赘述，网上有</p>
-<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> random</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="第二部分：设置基础变量"><a href="#第二部分：设置基础变量" class="headerlink" title="第二部分：设置基础变量"></a>第二部分：设置基础变量</h3><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 初始化pygame</span></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置屏幕大小</span></span><br><span class="line">screen_width = <span class="number">800</span></span><br><span class="line">screen_height = <span class="number">400</span></span><br><span class="line">screen = pygame.display.set_mode((screen_width, screen_height))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置颜色</span></span><br><span class="line">white = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)  <span class="comment"># 背景颜色设置为白色</span></span><br><span class="line">black = (<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line">green = (<span class="number">0</span>,<span class="number">255</span>,<span class="number">0</span>)</span><br><span class="line"><span class="comment"># 设置时钟</span></span><br><span class="line">clock = pygame.time.Clock()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置字体</span></span><br><span class="line">font = pygame.font.Font(<span class="literal">None</span>, <span class="number">50</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>接下来的步骤很重要，先放代码后讲解操作</p>
-<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    dino_image = pygame.image.load(<span class="string">&#x27;dino.png&#x27;</span>).convert_alpha()</span><br><span class="line">    cactus_image = pygame.image.load(<span class="string">&#x27;cactus.png&#x27;</span>).convert_alpha()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 缩小图像</span></span><br><span class="line">    scale_factor = <span class="number">0.4</span> <span class="comment"># 缩小因子</span></span><br><span class="line">    dino_image = pygame.transform.scale(dino_image, (<span class="built_in">int</span>(dino_image.get_width() * scale_factor), <span class="built_in">int</span>(dino_image.get_height() * scale_factor)))</span><br><span class="line">    cactus_image = pygame.transform.scale(cactus_image, (<span class="built_in">int</span>(cactus_image.get_width() * scale_factor), <span class="built_in">int</span>(cactus_image.get_height() * scale_factor)))</span><br><span class="line"><span class="keyword">except</span> pygame.error <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Cannot load image: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line">    sys.exit()</span><br></pre></td></tr></table></figure></div>
-<p>有经验的老同志可能看出来了，第2，3行图片并没有，所以需要从网上找到恐龙和仙人掌图片后分别重命名为dino.png 和cactus.png，对应代码中的第2 3行，并且把图片和代码源文件放置在同一文件夹里面！！！！要不然系统找不到！！！！如果嫌烦在本文结尾评论或者在B站私信我，我会将图片发送</p>
-<h3 id="第三部分：加载角色类"><a href="#第三部分：加载角色类" class="headerlink" title="第三部分：加载角色类"></a>第三部分：加载角色类</h3><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Dino</span>(pygame.sprite.Sprite):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(Dino, self).__init__()</span><br><span class="line">        self.image = dino_image</span><br><span class="line">        self.rect = self.image.get_rect()</span><br><span class="line">        self.rect.x = <span class="number">100</span></span><br><span class="line">        self.rect.y = screen_height - self.rect.height - <span class="number">50</span></span><br><span class="line">        self.gravity = <span class="number">0.5</span></span><br><span class="line">        self.velocity_y = <span class="number">0</span></span><br><span class="line">        self.jumping = <span class="literal">False</span></span><br><span class="line">        self.jump_height = -<span class="number">18</span> <span class="comment"># 跳跃高度</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">update</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> self.jumping:</span><br><span class="line">            self.velocity_y += self.gravity</span><br><span class="line">            self.rect.y += self.velocity_y</span><br><span class="line">            <span class="keyword">if</span> self.rect.bottom &gt;= screen_height - self.rect.height:</span><br><span class="line">                self.velocity_y = <span class="number">0</span></span><br><span class="line">                self.jumping = <span class="literal">False</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.velocity_y = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">jump</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.jumping:</span><br><span class="line">            self.jumping = <span class="literal">True</span></span><br><span class="line">            self.velocity_y = self.jump_height</span><br><span class="line"></span><br><span class="line"><span class="comment"># 障碍物类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Obstacle</span>(pygame.sprite.Sprite):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(Obstacle, self).__init__()</span><br><span class="line">        self.image = cactus_image</span><br><span class="line">        self.rect = self.image.get_rect()</span><br><span class="line">        self.rect.x = screen_width</span><br><span class="line">        self.rect.y = screen_height - self.rect.height - <span class="number">55</span>  <span class="comment"># 保持障碍物在屏幕底部的直线上</span></span><br><span class="line">        self.speed = <span class="number">2.7</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">update</span>(<span class="params">self</span>):</span><br><span class="line">        self.rect.x -= self.speed</span><br><span class="line">        <span class="keyword">if</span> self.rect.x &lt; -self.rect.width:</span><br><span class="line">            self.kill()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建小恐龙实例</span></span><br><span class="line">dino = Dino()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建障碍物群组</span></span><br><span class="line">obstacles = pygame.sprite.Group()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分数</span></span><br><span class="line">score = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 游戏状态</span></span><br><span class="line">game_over = <span class="literal">False</span></span><br></pre></td></tr></table></figure></div>
-<p>这一步中跳跃高度是我调教过的，可以自己更改，也可以搭配我提供的图片使用</p>
-<h3 id="第四部分：游戏主循环"><a href="#第四部分：游戏主循环" class="headerlink" title="第四部分：游戏主循环"></a>第四部分：游戏主循环</h3><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 游戏主循环</span></span><br><span class="line">running = <span class="literal">True</span></span><br><span class="line"><span class="keyword">while</span> running:</span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="keyword">if</span> event.<span class="built_in">type</span> == pygame.QUIT:</span><br><span class="line">            running = <span class="literal">False</span></span><br><span class="line">        <span class="keyword">if</span> event.<span class="built_in">type</span> == pygame.KEYDOWN <span class="keyword">and</span> event.key == pygame.K_SPACE:</span><br><span class="line">            dino.jump()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 更新小恐龙</span></span><br><span class="line">    dino.update()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 更新障碍物</span></span><br><span class="line">    obstacles.update()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 障碍物生成</span></span><br><span class="line">    <span class="keyword">if</span> random.randint(<span class="number">1</span>, <span class="number">120</span>) == <span class="number">1</span> <span class="keyword">and</span> <span class="keyword">not</span> game_over: <span class="comment"># 每120帧大约有1个障碍物生成</span></span><br><span class="line">        obstacles.add(Obstacle())</span><br><span class="line">        <span class="keyword">if</span> random.randint (<span class="number">1</span>,<span class="number">120</span>) == <span class="number">2</span> <span class="keyword">and</span> <span class="keyword">not</span> game_over:</span><br><span class="line">            obstacles.add = <span class="number">1</span></span><br><span class="line">    <span class="comment"># 碰撞检测</span></span><br><span class="line">    <span class="keyword">if</span> pygame.sprite.spritecollide(dino, obstacles, <span class="literal">False</span>):</span><br><span class="line">        game_over = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 绘制背景</span></span><br><span class="line">    screen.fill(white)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 绘制小恐龙</span></span><br><span class="line">    screen.blit(dino.image, dino.rect)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 绘制障碍物</span></span><br><span class="line">    <span class="keyword">for</span> obstacle <span class="keyword">in</span> obstacles:</span><br><span class="line">        screen.blit(obstacle.image, obstacle.rect)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 显示分数</span></span><br><span class="line">    score_text = font.render(<span class="string">f&quot;Score: <span class="subst">&#123;<span class="built_in">int</span>(score)&#125;</span>&quot;</span>, <span class="literal">True</span>, black)</span><br><span class="line">    screen.blit(score_text, (<span class="number">10</span>, <span class="number">10</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 更新屏幕显示</span></span><br><span class="line">    pygame.display.flip()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 控制游戏帧率</span></span><br><span class="line">    clock.tick(<span class="number">60</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 更新分数</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> game_over:</span><br><span class="line">        score += <span class="number">0.1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 游戏结束处理</span></span><br><span class="line">    <span class="keyword">if</span> game_over:</span><br><span class="line">        screen.fill(black)</span><br><span class="line">        over_font = pygame.font.Font(<span class="literal">None</span>, <span class="number">70</span>)</span><br><span class="line">        over_text = over_font.render(<span class="string">&quot;Game Over&quot;</span>, <span class="literal">True</span>, white)</span><br><span class="line">        over_rect = over_text.get_rect(center=(screen_width // <span class="number">2</span>, screen_height // <span class="number">2</span>))</span><br><span class="line">        screen.blit(over_text, over_rect)</span><br><span class="line">        pygame.display.flip()</span><br><span class="line">        pygame.time.wait(<span class="number">3000</span>)</span><br><span class="line">        running = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 退出pygame</span></span><br><span class="line">pygame.quit()</span><br><span class="line">sys.exit()</span><br></pre></td></tr></table></figure></div>
-<p>这一部分需要注意的是：障碍物生成频率和帧率是我调教过的，不要乱改！！！不要乱改！！！改了以后就会鬼畜一样几十个卡在一起出现，别问我怎么知道的。</p>
-<h4 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h4><p>以上就是我的最新python作品的代码开源和介绍了，本文和代码为我原创，您可以拿去自用，但这是创作者的心血！！所以如果您要摘编请与我联系（一初中生的文章有啥好转载的，对吧【滑稽】），视频介绍请见哔哩哔哩，预计7月上旬发布（账号：Terry—zhang同学，本网站有链接）在此感谢您的观看，欢迎评论。</p>
-]]></content>
-      <categories>
-        <category>数码编程</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>studio从入门到精通——像乐高设计师一样创作   一</title>
-    <url>/2024/11/07/studio%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A%E2%80%94%E2%80%94%E5%83%8F%E4%B9%90%E9%AB%98%E8%AE%BE%E8%AE%A1%E5%B8%88%E4%B8%80%E6%A0%B7%E5%88%9B%E4%BD%9C/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>legostudio是丹麦乐高公司收购的bricklink公司开发的一款虚拟搭建软件，以方便易上手而著称，稍加熟悉即可顺畅使用</p>
-<h2 id="第一部分-下载："><a href="#第一部分-下载：" class="headerlink" title="第一部分 下载："></a>第一部分 下载：</h2><p>studio是由丹麦bricklink公司所开发运营，可点击<a class="link"   href="https://www.bricklink.com/v3/studio/download.page" >下载链接<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，如下<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://pic.imgdb.cn/item/675af1f4d0e0a243d4e30661.png"
-                      alt="bricklink" title="可选的标题"
-                ><br>点击下载Windows版本，windows版本需要大于win7。按照常规流程和安装提示安装即可，此处不过多赘述</p>
-<div class="callout callout--simple blue mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2 items-center"><div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div><div class="callout__content markdown-body flex-1 min-w-0"><p>建议下载地址选择C盘，避免作品丢失</p></div></div>
-
-<h2 id="第二部分-初阶使用："><a href="#第二部分-初阶使用：" class="headerlink" title="第二部分 初阶使用："></a>第二部分 初阶使用：</h2><p>当完成下载后，双击打开，studio2.0。开启时加载时间可能会很长，请耐心等待，若提示“未响应”，不必惊慌，大约1分钟后会自动启动。当您的电脑出现如下的界面，恭喜您，你正式成为了一名乐高的mocer<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://pic.imgdb.cn/item/675af24ad0e0a243d4e3066e.png"
-                      alt="studio" title="可选的标题"
-                ><br>开始界面的“p42”和”hxd1”是博主的作品，您的主页没有不必惊慌。<br>接下来点击”create“按钮打开一个新的界面，如下<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://pic.imgdb.cn/item/675af268d0e0a243d4e30673.png"
-                      alt="studio work" title="可选的标题"
-                >这张图下面的指导可以对照。</p>
-<h4 id="2-1-页面功能介绍"><a href="#2-1-页面功能介绍" class="headerlink" title="2.1 页面功能介绍"></a>2.1 页面功能介绍</h4><p>1.在新界面左侧许多的砖块，您可以通过在对应的砖块上用左键拖动至工作区，当砖块被选中时轮廓呈蓝色，若需要改变砖块颜色，请选中后在右侧”colour palette”处选择颜色并单击想要的颜色。</p>
-<p>2.在页面的左下角有一个”total parts”提示框，您可以通过此处查看您的用砖情况</p>
-<p>3.在工作区的左侧有砖块分类区域，您可以查找砖块编号和零件种类</p>
-<p>请在开始创作前将顶部菜单栏的”snap”按钮点亮至蓝色，如下<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://pic.imgdb.cn/item/675af2bad0e0a243d4e30679.png"
-                      alt="菜单设置" title="可选的标题"
-                ></p>
-<h4 id="2-2-操作指导"><a href="#2-2-操作指导" class="headerlink" title="2.2 操作指导"></a>2.2 操作指导</h4><p>下面为基本鼠标操作指导：</p>
-<div class="callout callout--simple green mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2 items-center"><div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div><div class="callout__content markdown-body flex-1 min-w-0"><p>按住右键拖动为改变作品视角</p></div></div>
-
-<div class="callout callout--simple green mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2 items-center"><div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div><div class="callout__content markdown-body flex-1 min-w-0"><p>键盘上的”w“ 键为上升视角，”s“键为下降视角，”a“键向左移动视角，”d“键向右移动视角</p></div></div>
-
-<div class="callout callout--simple green mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2 items-center"><div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div><div class="callout__content markdown-body flex-1 min-w-0"><p>左键为拖动砖块，选中砖块。当砖块被选中时轮廓呈蓝色</p></div></div>
-
-<div class="callout callout--simple green mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2 items-center"><div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div><div class="callout__content markdown-body flex-1 min-w-0"><p>键盘上“上下左右”按键可以调节零件或作品方向。若需要细调角度，可用左键单击零件或选中后出现两个蓝色按钮，点击左侧的圆弧箭头按钮，即可开始调节</p></div></div>
-
-<p>具体操作可观看如下视频，可最大化观看。进阶教程将后期发布</p>
- 
- <iframe src="https://cccimg.com/player.php?hash=b762a42e61b9eb15dd2beedace135d0c" width="400" height="300" scrolling="no" frameborder="0"></iframe>
-
-]]></content>
-      <categories>
-        <category>乐高</category>
-      </categories>
-      <tags>
-        <tag>lego studio</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>百词斩单词机入手体验＆使用心得</title>
     <url>/2025/01/09/baicizhanmachine/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>只要各位曾拿起过初中（高中）英语考纲词汇用法手册这类书的话，肯定感受过那来自初中1700词和高中3500词的威慑力。那些单词就像一群难以驯服的野马，刚被拉进记忆的 “马厩”，转眼间就挣脱缰绳，跑得无影无踪。所以，有啥办法呢？</p>
@@ -269,6 +190,200 @@
       </categories>
       <tags>
         <tag>产品评测</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python新作——谷歌浏览器dino游戏</title>
+    <url>/2024/06/20/python%E6%96%B0%E4%BD%9C%E2%80%94%E2%80%94%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8dino%E6%B8%B8%E6%88%8F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>说到google chrome，很多人都会想到它标志性的断网小游戏——chrome dino，今日，我们利用python还原并将代码开源，欢迎随时取用。话不多说，直接进入正题       </p>
+<h3 id="第一部分-配置环境"><a href="#第一部分-配置环境" class="headerlink" title="第一部分:配置环境"></a>第一部分:配置环境</h3><p>编译器：pycharm社区版2024.1<br>插件：pygame</p>
+<p>导入所用库,没有的可以去下载，具体方法不多赘述，网上有</p>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> random</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="第二部分：设置基础变量"><a href="#第二部分：设置基础变量" class="headerlink" title="第二部分：设置基础变量"></a>第二部分：设置基础变量</h3><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 初始化pygame</span></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置屏幕大小</span></span><br><span class="line">screen_width = <span class="number">800</span></span><br><span class="line">screen_height = <span class="number">400</span></span><br><span class="line">screen = pygame.display.set_mode((screen_width, screen_height))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置颜色</span></span><br><span class="line">white = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)  <span class="comment"># 背景颜色设置为白色</span></span><br><span class="line">black = (<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line">green = (<span class="number">0</span>,<span class="number">255</span>,<span class="number">0</span>)</span><br><span class="line"><span class="comment"># 设置时钟</span></span><br><span class="line">clock = pygame.time.Clock()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置字体</span></span><br><span class="line">font = pygame.font.Font(<span class="literal">None</span>, <span class="number">50</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>接下来的步骤很重要，先放代码后讲解操作</p>
+<div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    dino_image = pygame.image.load(<span class="string">&#x27;dino.png&#x27;</span>).convert_alpha()</span><br><span class="line">    cactus_image = pygame.image.load(<span class="string">&#x27;cactus.png&#x27;</span>).convert_alpha()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 缩小图像</span></span><br><span class="line">    scale_factor = <span class="number">0.4</span> <span class="comment"># 缩小因子</span></span><br><span class="line">    dino_image = pygame.transform.scale(dino_image, (<span class="built_in">int</span>(dino_image.get_width() * scale_factor), <span class="built_in">int</span>(dino_image.get_height() * scale_factor)))</span><br><span class="line">    cactus_image = pygame.transform.scale(cactus_image, (<span class="built_in">int</span>(cactus_image.get_width() * scale_factor), <span class="built_in">int</span>(cactus_image.get_height() * scale_factor)))</span><br><span class="line"><span class="keyword">except</span> pygame.error <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Cannot load image: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line">    sys.exit()</span><br></pre></td></tr></table></figure></div>
+<p>有经验的老同志可能看出来了，第2，3行图片并没有，所以需要从网上找到恐龙和仙人掌图片后分别重命名为dino.png 和cactus.png，对应代码中的第2 3行，并且把图片和代码源文件放置在同一文件夹里面！！！！要不然系统找不到！！！！如果嫌烦在本文结尾评论或者在B站私信我，我会将图片发送</p>
+<h3 id="第三部分：加载角色类"><a href="#第三部分：加载角色类" class="headerlink" title="第三部分：加载角色类"></a>第三部分：加载角色类</h3><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Dino</span>(pygame.sprite.Sprite):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(Dino, self).__init__()</span><br><span class="line">        self.image = dino_image</span><br><span class="line">        self.rect = self.image.get_rect()</span><br><span class="line">        self.rect.x = <span class="number">100</span></span><br><span class="line">        self.rect.y = screen_height - self.rect.height - <span class="number">50</span></span><br><span class="line">        self.gravity = <span class="number">0.5</span></span><br><span class="line">        self.velocity_y = <span class="number">0</span></span><br><span class="line">        self.jumping = <span class="literal">False</span></span><br><span class="line">        self.jump_height = -<span class="number">18</span> <span class="comment"># 跳跃高度</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">update</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> self.jumping:</span><br><span class="line">            self.velocity_y += self.gravity</span><br><span class="line">            self.rect.y += self.velocity_y</span><br><span class="line">            <span class="keyword">if</span> self.rect.bottom &gt;= screen_height - self.rect.height:</span><br><span class="line">                self.velocity_y = <span class="number">0</span></span><br><span class="line">                self.jumping = <span class="literal">False</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.velocity_y = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">jump</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.jumping:</span><br><span class="line">            self.jumping = <span class="literal">True</span></span><br><span class="line">            self.velocity_y = self.jump_height</span><br><span class="line"></span><br><span class="line"><span class="comment"># 障碍物类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Obstacle</span>(pygame.sprite.Sprite):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(Obstacle, self).__init__()</span><br><span class="line">        self.image = cactus_image</span><br><span class="line">        self.rect = self.image.get_rect()</span><br><span class="line">        self.rect.x = screen_width</span><br><span class="line">        self.rect.y = screen_height - self.rect.height - <span class="number">55</span>  <span class="comment"># 保持障碍物在屏幕底部的直线上</span></span><br><span class="line">        self.speed = <span class="number">2.7</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">update</span>(<span class="params">self</span>):</span><br><span class="line">        self.rect.x -= self.speed</span><br><span class="line">        <span class="keyword">if</span> self.rect.x &lt; -self.rect.width:</span><br><span class="line">            self.kill()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建小恐龙实例</span></span><br><span class="line">dino = Dino()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建障碍物群组</span></span><br><span class="line">obstacles = pygame.sprite.Group()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分数</span></span><br><span class="line">score = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 游戏状态</span></span><br><span class="line">game_over = <span class="literal">False</span></span><br></pre></td></tr></table></figure></div>
+<p>这一步中跳跃高度是我调教过的，可以自己更改，也可以搭配我提供的图片使用</p>
+<h3 id="第四部分：游戏主循环"><a href="#第四部分：游戏主循环" class="headerlink" title="第四部分：游戏主循环"></a>第四部分：游戏主循环</h3><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 游戏主循环</span></span><br><span class="line">running = <span class="literal">True</span></span><br><span class="line"><span class="keyword">while</span> running:</span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="keyword">if</span> event.<span class="built_in">type</span> == pygame.QUIT:</span><br><span class="line">            running = <span class="literal">False</span></span><br><span class="line">        <span class="keyword">if</span> event.<span class="built_in">type</span> == pygame.KEYDOWN <span class="keyword">and</span> event.key == pygame.K_SPACE:</span><br><span class="line">            dino.jump()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 更新小恐龙</span></span><br><span class="line">    dino.update()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 更新障碍物</span></span><br><span class="line">    obstacles.update()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 障碍物生成</span></span><br><span class="line">    <span class="keyword">if</span> random.randint(<span class="number">1</span>, <span class="number">120</span>) == <span class="number">1</span> <span class="keyword">and</span> <span class="keyword">not</span> game_over: <span class="comment"># 每120帧大约有1个障碍物生成</span></span><br><span class="line">        obstacles.add(Obstacle())</span><br><span class="line">        <span class="keyword">if</span> random.randint (<span class="number">1</span>,<span class="number">120</span>) == <span class="number">2</span> <span class="keyword">and</span> <span class="keyword">not</span> game_over:</span><br><span class="line">            obstacles.add = <span class="number">1</span></span><br><span class="line">    <span class="comment"># 碰撞检测</span></span><br><span class="line">    <span class="keyword">if</span> pygame.sprite.spritecollide(dino, obstacles, <span class="literal">False</span>):</span><br><span class="line">        game_over = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 绘制背景</span></span><br><span class="line">    screen.fill(white)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 绘制小恐龙</span></span><br><span class="line">    screen.blit(dino.image, dino.rect)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 绘制障碍物</span></span><br><span class="line">    <span class="keyword">for</span> obstacle <span class="keyword">in</span> obstacles:</span><br><span class="line">        screen.blit(obstacle.image, obstacle.rect)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 显示分数</span></span><br><span class="line">    score_text = font.render(<span class="string">f&quot;Score: <span class="subst">&#123;<span class="built_in">int</span>(score)&#125;</span>&quot;</span>, <span class="literal">True</span>, black)</span><br><span class="line">    screen.blit(score_text, (<span class="number">10</span>, <span class="number">10</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 更新屏幕显示</span></span><br><span class="line">    pygame.display.flip()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 控制游戏帧率</span></span><br><span class="line">    clock.tick(<span class="number">60</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 更新分数</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> game_over:</span><br><span class="line">        score += <span class="number">0.1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 游戏结束处理</span></span><br><span class="line">    <span class="keyword">if</span> game_over:</span><br><span class="line">        screen.fill(black)</span><br><span class="line">        over_font = pygame.font.Font(<span class="literal">None</span>, <span class="number">70</span>)</span><br><span class="line">        over_text = over_font.render(<span class="string">&quot;Game Over&quot;</span>, <span class="literal">True</span>, white)</span><br><span class="line">        over_rect = over_text.get_rect(center=(screen_width // <span class="number">2</span>, screen_height // <span class="number">2</span>))</span><br><span class="line">        screen.blit(over_text, over_rect)</span><br><span class="line">        pygame.display.flip()</span><br><span class="line">        pygame.time.wait(<span class="number">3000</span>)</span><br><span class="line">        running = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 退出pygame</span></span><br><span class="line">pygame.quit()</span><br><span class="line">sys.exit()</span><br></pre></td></tr></table></figure></div>
+<p>这一部分需要注意的是：障碍物生成频率和帧率是我调教过的，不要乱改！！！不要乱改！！！改了以后就会鬼畜一样几十个卡在一起出现，别问我怎么知道的。</p>
+<h4 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h4><p>以上就是我的最新python作品的代码开源和介绍了，本文和代码为我原创，您可以拿去自用，但这是创作者的心血！！所以如果您要摘编请与我联系（一初中生的文章有啥好转载的，对吧【滑稽】），视频介绍请见哔哩哔哩，预计7月上旬发布（账号：Terry—zhang同学，本网站有链接）在此感谢您的观看，欢迎评论。</p>
+]]></content>
+      <categories>
+        <category>数码编程</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>入门全画幅T0级别？尼康Z5II相机入手体验</title>
+    <url>/2026/08/18/nikonz52-test/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>引言：博主于今年7月份购入了尼康z5ii这款相机作为自己的摄影主力机。入手小一个月，出去旅游一次已经达到了1000+快门数，所以本期就从一个普通摄影爱好者的角度客观评价一下这款相机</p>
+<p><em>注：本文内容中全部照片均来自于本博客博主，评价均为客观评价，无弄虚作假，且本文以器材测评为主，不涉及具体摄影方法。机型支持、价格等均以本文发布时期为准</em></p>
+<h1 id="P1-设备概览"><a href="#P1-设备概览" class="headerlink" title="P1 设备概览"></a>P1 设备概览</h1><h2 id="1-1-参数外观"><a href="#1-1-参数外观" class="headerlink" title="1.1 参数外观"></a>1.1 参数外观</h2><h3 id="1-1-1-参数介绍"><a href="#1-1-1-参数介绍" class="headerlink" title="1.1.1 参数介绍"></a>1.1.1 参数介绍</h3><p>NikonZ5ii发布于2025年下半年，作为尼康目前较新的一款机器，其搭载了2450万有效像素全画幅传感器和尼康旗舰的EXPEED 7影像处理器，cmos5轴防抖。具有十几种内置滤镜，并可以从尼康云创（下文详细讲）上选择众多大佬创建的滤镜方案后在线传到相机中，对于像我这种习惯原图直出用户十分友好。相较于上一代，其动态范围提升，对焦精确度直接跨越一个层级，连拍速度达到30张&#x2F;秒（告别了一代的4.5张&#x2F;秒的传奇连拍王屈辱称号），视频支持4k120p以及N-raw内录，淘宝26年7月后单机国补后价格仅约8989元，对于一款入门全画幅可谓诚意满满。（详细数据介绍见<a class="link"   href="https://www.nikon.com.cn/sc_CN/product/mirrorless/z5ii" >尼康官网<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>）</p>
+<h3 id="1-1-2-博主返图："><a href="#1-1-2-博主返图：" class="headerlink" title="1.1.2 博主返图："></a>1.1.2 博主返图：</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ik.imagekit.io/terryzhang/IMG_5620.jpeg?updatedAt=1787044250157"
+                      alt="图片描述"
+                ><br>包装盒，其中含有相机本体，套机镜头，原厂电池一块，一根肩带，充电线，镜头正盖和底盖<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ik.imagekit.io/terryzhang/IMG_5627.jpeg?updatedAt=1787044250243"
+                      alt="图片描述"
+                ><br>裸机<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ik.imagekit.io/terryzhang/IMG_5628.jpeg?updatedAt=1787044250258"
+                      alt="图片描述"
+                ><br>整机（我选择的是24-105套机镜头，综合看下来能够适应80%左右的使用场景，算是性价比较高的一款镜头了）<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ik.imagekit.io/terryzhang/IMG_5857.jpeg?updatedAt=1787044250379"
+                      alt="图片描述"
+                ><br>机身背面，按键排布比较合理，操作和握持都算不错</p>
+<h1 id="P2-综合测评"><a href="#P2-综合测评" class="headerlink" title="P2 综合测评"></a>P2 综合测评</h1><h2 id="2-1-基本功能体验"><a href="#2-1-基本功能体验" class="headerlink" title="2.1 基本功能体验"></a>2.1 基本功能体验</h2><h3 id="2-1-1-机内菜单"><a href="#2-1-1-机内菜单" class="headerlink" title="2.1.1 机内菜单"></a>2.1.1 机内菜单</h3><p>这款相机的菜单和尼康其他机型没有较大差别，通过点击MENU键进入。内部分区合理，并且可以自定义按键功能，各项参数设定也比较快捷，M档下快速调整拍摄参数也很方便，没啥槽点。</p>
+<h3 id="2-1-2-屏幕-取景器"><a href="#2-1-2-屏幕-取景器" class="headerlink" title="2.1.2 屏幕&amp;取景器"></a>2.1.2 屏幕&amp;取景器</h3><p>尼康的这块180°翻转屏可谓素质极佳，能做到和直出图片色彩大差不差，减少了开盲盒般的糟糕导出体验，以下是对比图片<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ik.imagekit.io/terryzhang/IMG_5924.jpeg?updatedAt=1787050039048"
+                      alt="图片描述"
+                ><br>实拍机内预览（手机对屏拍还是略有失真，想入手的可以亲自去线下店感受一下，屏幕颜色亮度确实很准，本人亲测）<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ik.imagekit.io/terryzhang/IMG_7476.jpeg?updatedAt=1787049476435"
+                      alt="图片描述"
+                ><br>另外这块电子取景器在部分情况下取景时颜色会略微偏鲜艳，问题不算大。</p>
+<h3 id="2-1-3-常规拍摄-对焦-防抖"><a href="#2-1-3-常规拍摄-对焦-防抖" class="headerlink" title="2.1.3 常规拍摄&amp;对焦&amp;防抖"></a>2.1.3 常规拍摄&amp;对焦&amp;防抖</h3><p>这款相机有M（全手动）、P（部分可调自动）、S（快门优先）、A（光圈优先）、AUTO（全自动），以及三个预设拍摄挡位，算是该有的都有，并且滚轮和按钮位置合理，能快速调整快门、光圈、iso、曝光补偿等设置。夜间拍摄时其高感表现很优秀，只要是略微有光的情况下都不会出现噪点爆炸的无奈画面<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ik.imagekit.io/terryzhang/FullSizeRender_1786114012274.jpeg?updatedAt=1787043049519"
+                      alt="图片描述"
+                ><br>示例图，可见此时ISO800下噪点依然可控</p>
+<p>对焦方面，想必大家在网络上对尼康只对鸟不对人的顶级对焦有所耳闻。但我亲自使用下来，其无论对人对景还是对鸟，对焦功能基本在线，但也有对不上的时候（总体上没有网上那么夸张）。且它搭载了在AF-C模式下的3d追焦功能，即在设定的对焦框位置锁定物体后无论怎样移动相机都能保证对焦对象不变，十分有利于不同构图场景和运动物体抓拍。</p>
+<p>防抖方面，我在使用105mm焦段时可以做到1&#x2F;8s的快门手持拍摄不糊片，显然比应该使用的1&#x2F;105s的安全快门低，说明其防抖能力还不错。</p>
+<p>视频拍摄目前还没有拍过作品，故暂且不作评。</p>
+<h3 id="2-1-4-电池续航"><a href="#2-1-4-电池续航" class="headerlink" title="2.1.4 电池续航"></a>2.1.4 电池续航</h3><p>不同拍摄条件下续航不同，目前本人也没有亲自测过最大续航，毕竟我一块电池从满电到没电撑满一天和边充边拍（不要长期这样）都经历过，不好说和其他友商的比较，但在连拍一天之前还是备好两块原厂电池比较好。</p>
+<h2 id="2-2-其他功能"><a href="#2-2-其他功能" class="headerlink" title="2.2 其他功能"></a>2.2 其他功能</h2><h3 id="2-2-1-尼康云创"><a href="#2-2-1-尼康云创" class="headerlink" title="2.2.1 尼康云创"></a>2.2.1 尼康云创</h3><p>这可以说是这个产品里最有性价比的一个功能，部分高端机(Z7,Z8,Z9)都没有这项支持。它能在线即拍即传，将照片机内传至百度网盘、天翼云等网盘（在联网下可用，可连手机热点)，免去拔卡插卡读卡挑照片导出的过程，只需打开你设置好的上传网盘，就可以立刻当场导出，无论是给朋友家人分享发朋友圈，还是给约拍的coser返图（bushi),都十分便捷。做到让你随时拿起相机记录分享感动瞬间。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ik.imagekit.io/terryzhang/IMG_5925.jpeg?updatedAt=1787054682522"
+                      alt="图片描述"
+                ><br>尼康云创网页页面</p>
+<p>另外，尼康云创提供了100多种滤镜选择，均来自一线摄影师和尼康官方，可以直接选择喜欢的滤镜在线导入相机使用，结合尼康本身出色的色彩，直接在色彩上层层叠buff。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ik.imagekit.io/terryzhang/IMG_5926.jpeg?updatedAt=1787055293802"
+                      alt="图片描述"
+                ><br>云创滤镜选择页面</p>
+<h1 id="P3-样片展示"><a href="#P3-样片展示" class="headerlink" title="P3 样片展示"></a>P3 样片展示</h1><p>接下来是博主用这款相机拍摄的部分照片<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://files.seeusercontent.com/2026/08/18/6rtH/_20260818203321_177_8.jpg"
+                      alt="图片描述"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://files.seeusercontent.com/2026/08/18/v3Tw/_20260818203324_180_8.jpg"
+                      alt="图片描述"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://ik.imagekit.io/terryzhang/FullSizeRender_1786282632340.jpeg?updatedAt=1787043051048"
+                      alt="图片描述"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://files.seeusercontent.com/2026/08/18/pp3Z/_20260818203322_178_8.jpg"
+                      alt="图片描述"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://files.seeusercontent.com/2026/08/18/tsK5/_20260818205843_184_8.jpg"
+                      alt="图片描述"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://files.seeusercontent.com/2026/08/18/amV3/_20260818210107_185_8.jpg"
+                      alt="图片描述"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://files.seeusercontent.com/2026/08/18/Yx2p/_20260818205842_183_8.jpg"
+                      alt="图片描述"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://files.seeusercontent.com/2026/08/18/mzL1/_20260818210708_187_8.jpg"
+                      alt="图片描述"
+                ><br>从上面的照片可以看出，尼康Z5II作为一款全画幅入门机，其色彩可是一点都不含糊。</p>
+<h1 id="P4-总结"><a href="#P4-总结" class="headerlink" title="P4 总结"></a>P4 总结</h1><p>Z52综合来看，确实是一款各方面均能拉出来打打的水桶机，而且说是入门级，但它的功能已经接近全画幅中端机的标准。对于想要正式入门摄影的同志们，这确实是一个不错的选择，短期使用下来优点明显多于缺点的，个人认为没有啥大问题，只是拍鸟等高速运动的物体时还是需要一定的多次对焦。但鉴于尼康大跳水的价格和国补福利，还是非常有竞争力的，建议主要拍摄风光或者人文的同志可以试试看。</p>
+<p>好了，博文就到这里，感谢您的阅读，如果您觉得我的文章还不错，欢迎在评论区评论或者多多关注下我的小站，谢谢咯~</p>
+]]></content>
+      <categories>
+        <category>数码编程</category>
+      </categories>
+      <tags>
+        <tag>相机</tag>
+        <tag>评测</tag>
+        <tag>摄影</tag>
+        <tag>Nikon</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>studio从入门到精通——像乐高设计师一样创作   一</title>
+    <url>/2024/11/07/studio%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A%E2%80%94%E2%80%94%E5%83%8F%E4%B9%90%E9%AB%98%E8%AE%BE%E8%AE%A1%E5%B8%88%E4%B8%80%E6%A0%B7%E5%88%9B%E4%BD%9C/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>legostudio是丹麦乐高公司收购的bricklink公司开发的一款虚拟搭建软件，以方便易上手而著称，稍加熟悉即可顺畅使用</p>
+<h2 id="第一部分-下载："><a href="#第一部分-下载：" class="headerlink" title="第一部分 下载："></a>第一部分 下载：</h2><p>studio是由丹麦bricklink公司所开发运营，可点击<a class="link"   href="https://www.bricklink.com/v3/studio/download.page" >下载链接<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，如下<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://pic.imgdb.cn/item/675af1f4d0e0a243d4e30661.png"
+                      alt="bricklink" title="可选的标题"
+                ><br>点击下载Windows版本，windows版本需要大于win7。按照常规流程和安装提示安装即可，此处不过多赘述</p>
+<div class="callout callout--simple blue mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2 items-center"><div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div><div class="callout__content markdown-body flex-1 min-w-0"><p>建议下载地址选择C盘，避免作品丢失</p></div></div>
+
+<h2 id="第二部分-初阶使用："><a href="#第二部分-初阶使用：" class="headerlink" title="第二部分 初阶使用："></a>第二部分 初阶使用：</h2><p>当完成下载后，双击打开，studio2.0。开启时加载时间可能会很长，请耐心等待，若提示“未响应”，不必惊慌，大约1分钟后会自动启动。当您的电脑出现如下的界面，恭喜您，你正式成为了一名乐高的mocer<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://pic.imgdb.cn/item/675af24ad0e0a243d4e3066e.png"
+                      alt="studio" title="可选的标题"
+                ><br>开始界面的“p42”和”hxd1”是博主的作品，您的主页没有不必惊慌。<br>接下来点击”create“按钮打开一个新的界面，如下<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://pic.imgdb.cn/item/675af268d0e0a243d4e30673.png"
+                      alt="studio work" title="可选的标题"
+                >这张图下面的指导可以对照。</p>
+<h4 id="2-1-页面功能介绍"><a href="#2-1-页面功能介绍" class="headerlink" title="2.1 页面功能介绍"></a>2.1 页面功能介绍</h4><p>1.在新界面左侧许多的砖块，您可以通过在对应的砖块上用左键拖动至工作区，当砖块被选中时轮廓呈蓝色，若需要改变砖块颜色，请选中后在右侧”colour palette”处选择颜色并单击想要的颜色。</p>
+<p>2.在页面的左下角有一个”total parts”提示框，您可以通过此处查看您的用砖情况</p>
+<p>3.在工作区的左侧有砖块分类区域，您可以查找砖块编号和零件种类</p>
+<p>请在开始创作前将顶部菜单栏的”snap”按钮点亮至蓝色，如下<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://pic.imgdb.cn/item/675af2bad0e0a243d4e30679.png"
+                      alt="菜单设置" title="可选的标题"
+                ></p>
+<h4 id="2-2-操作指导"><a href="#2-2-操作指导" class="headerlink" title="2.2 操作指导"></a>2.2 操作指导</h4><p>下面为基本鼠标操作指导：</p>
+<div class="callout callout--simple green mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2 items-center"><div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div><div class="callout__content markdown-body flex-1 min-w-0"><p>按住右键拖动为改变作品视角</p></div></div>
+
+<div class="callout callout--simple green mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2 items-center"><div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div><div class="callout__content markdown-body flex-1 min-w-0"><p>键盘上的”w“ 键为上升视角，”s“键为下降视角，”a“键向左移动视角，”d“键向右移动视角</p></div></div>
+
+<div class="callout callout--simple green mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2 items-center"><div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div><div class="callout__content markdown-body flex-1 min-w-0"><p>左键为拖动砖块，选中砖块。当砖块被选中时轮廓呈蓝色</p></div></div>
+
+<div class="callout callout--simple green mb-4 rounded-small shadow-redefine-flat bg-(--callout-bg-color) p-3 pl-1 relative flex flex-row gap-2 items-center"><div role="none" class="rounded-full self-stretch w-0.5 bg-(--callout-primary-color) shrink-0 opacity-60"></div><div class="callout__content markdown-body flex-1 min-w-0"><p>键盘上“上下左右”按键可以调节零件或作品方向。若需要细调角度，可用左键单击零件或选中后出现两个蓝色按钮，点击左侧的圆弧箭头按钮，即可开始调节</p></div></div>
+
+<p>具体操作可观看如下视频，可最大化观看。进阶教程将后期发布</p>
+ 
+ <iframe src="https://cccimg.com/player.php?hash=b762a42e61b9eb15dd2beedace135d0c" width="400" height="300" scrolling="no" frameborder="0"></iframe>
+
+]]></content>
+      <categories>
+        <category>乐高</category>
+      </categories>
+      <tags>
+        <tag>lego studio</tag>
       </tags>
   </entry>
   <entry>
